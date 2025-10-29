@@ -1,0 +1,45 @@
+const mongoose = require("mongoose");
+
+const InvoiceSchema = new mongoose.Schema({
+  name: { type: String },
+  address: { type: String },
+    ntnno: { type: Number },
+    email: { type: String },
+    phone: { type: Number },
+    saleInvoice: { type: String },
+    invoiceNo: { type: String },
+    posId: { type: String },
+    customerNtn: { type: Number },
+    user: { type: String },
+    date: { type: String },
+    sNo: { type: Number },
+    item: { type: String },
+    qty: { type: Number },
+    price: { type: Number },
+    gstp: { type: Number },
+    gstAmt: { type: Number },
+    disc: { type: Number },
+    total: { type: Number },
+    subTotal: { type: String },
+    subTotalNo: { type: Number },
+    totalGst: { type: String },
+    totalGstNo: { type: Number },
+    grossAmount: { type: String },
+    grossAmountNo: { type: Number },
+    totalDiscount: { type: String },
+    totalDiscountNo: { type: Number },
+    fbrFree: { type: String },
+    fbrFreeNo: { type: Number },
+    netBill: { type: Number },
+    cash: { type: String },
+    cashNo: { type: Number },
+    fbrInv: { type: String },
+    gstInclude: { type: String },
+    software: { type: String },
+    mobile: { type: String },
+  // dueDate: { type: Date, required: true },
+});
+
+const InvoiceModel = mongoose.model("Invoice", InvoiceSchema);
+
+module.exports = InvoiceModel;
