@@ -18,14 +18,14 @@ connectDB();
 
 
 
-// app.get("/api/products", async (req, res) => {
-//   try {
-//     const products = await Product.find();
-//     res.json(products);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
+app.get("/api/invoices", async (req, res) => {
+  try {
+    const invoiceListItems = await InvoiceModel.find({}, "name saleInvoice posId customerNtn date");
+    res.json(invoiceListItems);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 app.post("/post", async (req, res) => {
   try {
