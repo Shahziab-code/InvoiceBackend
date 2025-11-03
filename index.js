@@ -8,7 +8,6 @@ const app = express();
 const port = process.env.PORT || 4000;
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,11 +15,12 @@ connectDB();
 // .then(() => {
 //   console.log("Database connection established");
 
-
-
 app.get("/api/invoices", async (req, res) => {
   try {
-    const invoiceListItems = await InvoiceModel.find({}, "name saleInvoice posId customerNtn date");
+    const invoiceListItems = await InvoiceModel.find(
+      {},
+      "name address ntnno email phone saleInvoice invoiceNo posId customerNtn user date sNo item qty price gstp gstAmt disc total subTotal subTotalNo totalGst totalGstNo grossAmount grossAmountNo totalDiscount totalDiscountNo fbrFree fbrFreeNo netBill cash cashNo fbrInv gstInclude software mobile"
+    );
     res.json(invoiceListItems);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -29,7 +29,6 @@ app.get("/api/invoices", async (req, res) => {
 
 app.post("/post", async (req, res) => {
   try {
- 
     const newInvoice = new InvoiceModel({
       name: req.body.name,
       address: req.body.address,
